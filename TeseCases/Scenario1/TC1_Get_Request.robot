@@ -9,18 +9,18 @@ ${Base_Url}  https://gorest.co.in
 *** Test Cases ***
 TC_Get_Request
     Create Session  mysession  ${Base_Url}
-    ${header}=  Update Session  mysession  Accept=application/json  Content-type=application/json
+    ${header}=  Create Dictionary  Accept=application/json  Content-type=application/json
     ${Get_Response}=  GET On Session  mysession  /public/v1/posts/123/comments  headers=${header}
     ${json_response}=  set variable  ${Get_Response.json()}
-
+    log to console  ${header}
     Should Be Equal As Strings  ${Get_Response.status_code}  200
- 
+    log to console  ${Json_response}
 
 # Verify Value Page
     ${page_key}=  Get Value From Json  ${json_response}  $.meta.pagination.page 
-    ${Convert_Page_Object}=  Convert JSON To String  ${page_key}   
+    # ${Convert_Page_Object}=  Convert JSON To String  ${page_key}   
     Should Be Equal As Strings  ${page_key}  [1]
-    
+
 # Verify Value data
     ${data_array}=  Get Value From Json  ${json_response}  data 
     Should Be Equal As Strings  ${data_array}  [[]]
