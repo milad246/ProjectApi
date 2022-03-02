@@ -9,9 +9,13 @@ ${Base_Url}  https://gorest.co.in
 *** Test Cases ***
 TC_Get_Request
     Create Session  mysession  ${Base_Url}
-    ${Get_Response}=  GET On Session  mysession  /public/v1/posts/123/comments
+    ${header}=  Update Session  mysession  Accept=application/json  Content-type=application/json
+    ${Get_Response}=  GET On Session  mysession  /public/v1/posts/123/comments  headers=${header}
     ${json_response}=  set variable  ${Get_Response.json()}
+
+    Should Be Equal As Strings  ${Get_Response.status_code}  200
  
+
 # Verify Value Page
     ${page_key}=  Get Value From Json  ${json_response}  $.meta.pagination.page 
     ${Convert_Page_Object}=  Convert JSON To String  ${page_key}   

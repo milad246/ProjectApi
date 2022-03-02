@@ -27,11 +27,6 @@ TC4_Post_Request
 
 
 
-
-
-
-
-
 # TC5_Put_Response
 #     ${body_Put}=  Create Dictionary  name=david  job=leader  email=david@gmail.com
 #     ${response_Put}=  Put On Session  mysession  /api/users  data=${body_Put}  
