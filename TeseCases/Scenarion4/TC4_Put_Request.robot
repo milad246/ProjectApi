@@ -16,19 +16,21 @@ TC4_Post_Request
     ${body}=  Create Dictionary  name=morpheus  job=leader  email=morpheus@gmail.com 
     ${response}=  POST On Session  mysession  /api/users  json=${body} 
 
-    # ${Update_data}=  Create Dictionary  name=david  job=leader  email=david@gmail.com    
+    ${Update_data}=  Create Dictionary  name=david  job=leader  email=david@gmail.com    
     # ${Update_res}=  Update Session  mysession  data=${Update_data} 
+    ${response}=  POST On Session  mysession  /api/users  json=${Update_data} 
+
     # log to console  ${Update_res.content}
 
-    ${respons_content}=  set variable  ${response.json()}
+#     ${respons_content}=  set variable  ${response.json()}
   
-# Value CreatedAt
-     ${CreatedAt_Value}=  Get Value From Json  ${respons_content}  $.createdAt
-     log to console  ${CreatedAt_Value} 
+# # Value CreatedAt
+#      ${CreatedAt_Value}=  Get Value From Json  ${respons_content}  $.createdAt
+#      log to console  ${CreatedAt_Value} 
      
-# Jalali Date CreateAt
-    ${Jalali_Date}=  set variable  Jalali_Date_Keyword()
-    log to console  ${Jalali_Date}
+# # Jalali Date CreateAt
+#     ${Jalali_Date}=  set variable  Jalali_Date_Keyword()
+#     log to console  ${Jalali_Date}
       
 
 # # # Verifying Name
