@@ -14,13 +14,11 @@ Tc2_Create_Post_Request
     ${response}=  POST On Session  AddData  /api/users  json=${body}  
 
     ${json_response}=  set variable  ${response.json()} 
-    log to console  ${json_response}
   
     Should Be Equal As Strings  ${response.status_code}  201
 
  # Verify Name
     ${Name_Value}=  Get Value From Json  ${json_response}  $.name
-    log to console  ${Name_Value}
     Should Be Equal As Strings  ${Name_Value}  ['morpheus']  
 
 # Verify Job

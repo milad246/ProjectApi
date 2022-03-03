@@ -12,9 +12,8 @@ TC_Get_Request
     Create Session  mysession  ${Base_Url}  headers=${header}
     ${Get_Response}=  GET On Session  mysession  /public/v1/posts/123/comments  
     ${json_response}=  set variable  ${Get_Response.json()}
-    log to console  ${header}
     Should Be Equal As Strings  ${Get_Response.status_code}  200
-    log to console  ${Json_response}
+
 
 # Verify Value Page
     ${page_key}=  Get Value From Json  ${json_response}  $.meta.pagination.page 
