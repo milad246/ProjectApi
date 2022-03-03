@@ -9,29 +9,25 @@ ${Base_Url}  https://reqres.in
 
 *** Test Cases ***
 TC4_Post_Request
-    Create Session  mysession  ${Base_Url}
+    ${header}=  Create Dictionary  Accept=application/json  Content-type=application/json
+    Create Session  mysession  ${Base_Url}  headers=${header}   
     ${body}=  Create Dictionary  name=morpheus  job=leader  email=morpheus@gmail.com 
-    # ${headers}  Create Dictionary  Content-Type=application/json
-    ${response}=  POST On Session  mysession  /api/users  data=${body}  
-    ${respons_content}=  set variable  ${response.json()}
-    log to console  ${respons_content}
+    ${response}=  POST On Session  mysession  /api/users  json=${body} 
 
+    # ${Update_data}=  Create Dictionary  name=david  job=leader  email=david@gmail.com    
+    # ${Update_res}=  Update Session  mysession  data=${Update_data} 
+    # log to console  ${Update_res.content}
+
+    ${respons_content}=  set variable  ${response.json()}
+  
 # Value CreatedAt
      ${CreatedAt_Value}=  Get Value From Json  ${respons_content}  $.createdAt
      log to console  ${CreatedAt_Value} 
      
 # Jalali Date CreateAt
-    # ${Jalali_Date}=  func.Jalali_Date_Keyword  ${CreatedAt_Value}  
-    # log to console  ${Jalali_Date}  
-
-
-
-
-# TC5_Put_Response
-#     ${body_Put}=  Create Dictionary  name=david  job=leader  email=david@gmail.com
-#     ${response_Put}=  Put On Session  mysession  /api/users  data=${body_Put}  
-#     ${Update_Content}=  set variable  ${response_Put.json()}
-#     log to console  ${Update_Content}
+    ${Jalali_Date}=  set variable  Jalali_Date_Keyword()
+    log to console  ${Jalali_Date}
+      
 
 # # # Verifying Name
 #     ${Update_Name_Value}=  Get Value From Json  ${Update_Content}  $.name

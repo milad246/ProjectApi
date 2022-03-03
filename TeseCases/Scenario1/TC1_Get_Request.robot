@@ -8,9 +8,9 @@ ${Base_Url}  https://gorest.co.in
 
 *** Test Cases ***
 TC_Get_Request
-    Create Session  mysession  ${Base_Url}
     ${header}=  Create Dictionary  Accept=application/json  Content-type=application/json
-    ${Get_Response}=  GET On Session  mysession  /public/v1/posts/123/comments  headers=${header}
+    Create Session  mysession  ${Base_Url}  headers=${header}
+    ${Get_Response}=  GET On Session  mysession  /public/v1/posts/123/comments  
     ${json_response}=  set variable  ${Get_Response.json()}
     log to console  ${header}
     Should Be Equal As Strings  ${Get_Response.status_code}  200
