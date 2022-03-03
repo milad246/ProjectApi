@@ -1,7 +1,9 @@
 *** Settings ***
+Documentation  A test with Get method and checking the page and data
 Library  RequestsLibrary
 Library  JSONLibrary
 Library  Collections
+Force Tags  Get_Request
 
 *** Variables ***
 ${Base_Url}  https://gorest.co.in
@@ -19,7 +21,7 @@ TC_Get_Request
     ${page_key}=  Get Value From Json  ${json_response}  $.meta.pagination.page 
     # ${Convert_Page_Object}=  Convert JSON To String  ${page_key}   
     Should Be Equal As Strings  ${page_key}  [1]
-
+ 
 # Verify Value data
     ${data_array}=  Get Value From Json  ${json_response}  data 
     Should Be Equal As Strings  ${data_array}  [[]]

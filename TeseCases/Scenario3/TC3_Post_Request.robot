@@ -1,7 +1,9 @@
 *** Setting ***
+Documentation  A test with Post method and checking bad request
 Library  RequestsLibrary
 Library  JSONLibrary
 Library  Collections
+Force Tags  Post_ba_Request
 
 *** Variables ***
 ${Base_Url}  https://reqres.in

@@ -1,7 +1,9 @@
 *** Setting ***
+Documentation  A test with Post method and checking the name and job
 Library  RequestsLibrary
 Library  JSONLibrary
 Library  Collections
+Force Tags  Post_Request
 
 *** Variables ***
 ${Base_Url}  https://reqres.in
