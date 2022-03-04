@@ -15,6 +15,9 @@ TC4_Post_Request
     Create Session  mysession  ${Base_Url}  headers=${header}   
     ${body}=  Create Dictionary  name=morpheus  job=leader  email=morpheus@gmail.com 
     ${response}=  POST On Session  mysession  /api/users  json=${body} 
+    log to console  ${response}
+
+TC4_Update_Request
     ${Update_data}=  Create Dictionary  name=david  job=leader  email=david@gmail.com    
     # ${Update_res}=  Update Session  mysession  data=${Update_data} 
     ${response}=  POST On Session  mysession  /api/users  json=${Update_data} 
@@ -35,14 +38,12 @@ TC4_Post_Request
 
 # Value CreatedAt
      ${CreatedAt_Value}=  Get Value From Json  ${respons_content}  $.createdAt
-     log to console  ${CreatedAt_Value} 
+     log to console  ${CreatedAt_Value}
      
 # Jalali Date CreateAt
     ${list}=  Get From List  ${CreatedAt_Value}  0
     log to console  ${list}
-    ${int}=  Convert To String  ${list}  
-    log to console  ${int}
-    ${Jalali_Date}=  Date  ${int}
+    ${Jalali_Date}=  Conver Date  ${list}
     log to console  ${Jalali_Date}
       
  
