@@ -21,7 +21,6 @@ TC4_Post_Request
     ${respons_content}=  set variable  ${response.json()}
     log to console  ${respons_content}
   
-
 # Verifying Name
     ${Update_Name_Value}=  Get Value From Json  ${respons_content}  $.name
     Should Be Equal As Strings  ${Update_Name_Value}  ['david']
