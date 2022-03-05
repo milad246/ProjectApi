@@ -24,6 +24,6 @@ TC1_Get_Request
  
 # Verify Value data
     ${data_array}=  Get Value From Json  ${json_response}  data 
-    Should Be Equal As Strings  ${data_array}  [[]]
+    Should Be Equal As Strings  ${data_array}  [[]] 
 
     
