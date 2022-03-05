@@ -43,7 +43,7 @@ TC4_Update_Request
 # Jalali Date CreateAt
     ${list}=  Get From List  ${CreatedAt_Value}  0
     log to console  ${list}
-    ${Jalali_Date}=  Conver Date  ${list}
+    ${Jalali_Date}=  change_date  ${list}
     log to console  ${Jalali_Date}
       
  
